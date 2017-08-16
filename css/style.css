@@ -1,0 +1,130 @@
+.jimu-widget-fileimporter {
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+
+.jimu-widget-fileimporter ul{
+    padding-left:13px;
+}
+
+.jimu-widget-fileimporter ul li{
+
+}
+
+.jimu-widget-fileimporter .work-zone{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+.jimu-widget-fileimporter .drop-zone{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    border:2px dashed lightgrey;
+    border-radius:10px;
+    background-image:url('images/drop.png');
+    background-repeat:no-repeat;
+    background-position: right center;
+    margin:30;
+    cursor: move; /* fallback if grab cursor is unsupported */
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+}
+.jimu-widget-fileimporter .drop-zone:active {
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+}
+
+.jimu-widget-fileimporter .section{
+    width:100%;
+    min-height:50px;
+}
+
+.jimu-widget-fileimporter #import-section{
+    height:30px;
+    min-height:30px;
+}
+
+.jimu-widget-fileimporter .ondragover{
+
+}
+.jimu-widget-fileimporter #import-section .input-file{
+    width:calc(100% - 30px);
+}
+.jimu-widget-fileimporter #import-section .drop-file{
+    width:30px;
+    height:30px;
+    float:left;
+}
+
+.jimu-widget-fileimporter .loading-zone{
+    width:calc(100% - 35px);
+    float: left;
+}
+
+.jimu-widget-fileimporter #loading-section{
+
+}
+
+.jimu-widget-fileimporter .result-section{
+
+}
+.jimu-widget-fileimporter .result-section img{
+    width: 17px !important;
+    height: 17px !important;
+    border-radius: 8px !important;
+}
+
+.jimu-widget-fileimporter .separator{
+    clear:both;
+    width:100%;
+}
+
+.jimu-widget-fileimporter .loading{
+    height: 25px;
+    float: right;
+}
+
+.jimu-widget-fileimporter .cancel{
+    width: 30px;
+    height: 30px;
+    background-repeat: no-repeat;
+    float: right;
+    background-color: #e99a9a;
+    border-radius: 8px;
+    border: 1px solid #f97878;
+}
+.jimu-widget-fileimporter .cancel:hover{
+    background-color: #f6b5b5;
+    border-radius: 10px;
+    cursor:pointer;
+}
+
+.jimu-widget-fileimporter .zoom{
+    width: 30px;
+    height: 30px;
+    background-repeat: no-repeat;
+    float: right;
+    background-color: #9acae9;
+    border-radius: 8px;
+    border: 1px solid #84a7bd;
+    margin-right: 3px;
+}
+.jimu-widget-fileimporter .zoom:hover{
+    background-color: #aacfe7;
+    border-radius: 10px;
+    cursor:pointer;
+}
+.fileimporter-coord-view{
+    margin-left:10px;
+    color:#989898;
+}
+#file_xy_msg{
+    background-color: #f9d28b;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 10px;
+}

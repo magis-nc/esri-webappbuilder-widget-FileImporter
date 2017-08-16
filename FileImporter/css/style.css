@@ -83,6 +83,11 @@
     width:100%;
 }
 
+.jimu-widget-fileimporter .loading{
+    height: 25px;
+    float: right;
+}
+
 .jimu-widget-fileimporter .cancel{
     width: 30px;
     height: 30px;
@@ -112,4 +117,14 @@
     background-color: #aacfe7;
     border-radius: 10px;
     cursor:pointer;
+}
+.fileimporter-coord-view{
+    margin-left:10px;
+    color:#989898;
+}
+#file_xy_msg{
+    background-color: #f9d28b;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 10px;
 }

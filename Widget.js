@@ -22,8 +22,8 @@ define(
         'esri/Color',
         'jimu/jsonConverters',
 		    'jimu/SpatialReference/utils',
-        './togeojson',
-        './proj4'
+        'libs/togeojson',
+        'libs/proj4'
     ],
 	function (declare, BaseWidget, on, lang, domConstruct, esriRequest, Geoprocessor,
 	        FeatureLayer, GraphicsLayer, Graphic, InfoTemplate, graphicsUtils,

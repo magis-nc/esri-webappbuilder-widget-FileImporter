@@ -128,3 +128,11 @@
     padding: 10px;
     margin-top: 10px;
 }
+
+.jimu-widget-fileimporter .formats{
+  width: 100%;
+}
+.jimu-widget-fileimporter .formats img{
+  display:inline-block;
+  width:48px;
+}

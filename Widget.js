@@ -53,7 +53,7 @@ define(
 				on(this.domNode, "drop", lang.hitch(this, this.onFileDrop));
 			}
 
-      //Hitch slots for uplaod and GPServer
+      //Hitch slots for upload and GPServer
 			this.afterUploaded = lang.hitch(this, this.afterUploaded);
 			this.onUploadError = lang.hitch(this, this.onUploadError);
 			this.onGPResult = lang.hitch(this, this.onGPResult);
@@ -92,6 +92,12 @@ define(
           "kml" : this.importGPXorKML,
           "gpx" : this.importGPXorKML
       };
+
+      //Load formats icons
+      for(var i=0,nb=this.config.allowed_extensions.length;i<nb;i++){
+        var ext = this.config.allowed_extensions[i];
+        this.formats.innerHTML += '<img src="'+this.folderUrl+'/images/formats/'+ext+'.png" title="'+ext.toUpperCase()+'"/>';
+      }
 
       //Load projection ressources
       this._spatialReferences = {};

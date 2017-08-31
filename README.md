@@ -5,9 +5,6 @@ This FileImporter widget is made to load GIS files into the WebApp's map.
 The widget can load files with a GPServer or on the client side.
 The file can be selected with a file input or dropped in the widget.
 
-Some specific symbology is made on the client side for CAD files (respecting autocad colors).
-
-
 #Formats supported:
 - CAD files (dxf/dwg) -> GPServer
 - xls files (xls/xlsx) -> GPServer
@@ -31,19 +28,25 @@ NB : the spatial reference code isn't used if the input dataset has his own sr.
 The output is 4 featureSet (Points, Polylines, Polygons and Annotations).
 Please note that you can replace this Geoprocessing Service by your own if you respect the input and output parameters.
 
-#Client Side
+### Client Side
 Some formats can be treated on the client side.
 
 There is a specific UI for formatted text import which allow the user to chose the X ann Y columns
 and the input spatial reference.
 The separator is automaticaly detected and the X and Y select are pre-filed if some fields' names are found.
 
-## JavaScript Dependencies
+### Symbology
+- dwg/dxf have a basic symbology applied on the client side respecting Autocad Colors and LineWt
+- gpx use predefined symbologies for waypoints / routes /tracks (see GPX in config file)
+- kml has an approching symbology using styleUrl/stroke/stroke-opacity/stroke-width/fill/fill-opacity kml's properties
+- esri json loaded on the client side respect symbology if it is present in the file.
+
+### JavaScript Dependencies
 - toGeoJSON (https://github.com/mapbox/togeojson) : this library is used to convert kml and gpx to geoJson
 - proj4js (http://proj4js.org/) : use for reprojection in map spatial reference if needed
 
 
-#Widget's configuration
+### Widget's configuration
 - GPServer: url of the geoprocessing service used for server side treatment
 - importTool: name of the GPServer tool. (default : import)
 - async: is the GPServer asynchronous ?

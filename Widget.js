@@ -1,3 +1,5 @@
+console.log("FileImporter\Widget.js", wabVersion);
+var module_GeojsonConverter = (!wabVersion || wabVersion < 2.5) ? './GeojsonConverters' : 'jimu/GeojsonConverters';
 define(
     [
         'dojo/_base/declare',
@@ -20,7 +22,7 @@ define(
         'esri/symbols/SimpleLineSymbol',
         'esri/symbols/SimpleFillSymbol',
         'esri/Color',
-        'jimu/jsonConverters',
+        module_GeojsonConverter,
 		    'jimu/SpatialReference/utils',
         'libs/togeojson',
         'libs/proj4'
@@ -29,7 +31,8 @@ define(
 	        FeatureLayer, GraphicsLayer, Graphic, InfoTemplate, graphicsUtils,
 	        Message, Popup,
 	        TextSymbol, SimpleMarkerSymbol, PictureMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, Color,
-	        jsonConverters, SRUtils, toGeoJSON, proj4js) {
+	        GeojsonConverters,
+	        SRUtils, toGeoJSON, proj4js) {
 
 	//To create a widget, you need to derive from BaseWidget.
 	return declare([BaseWidget], {
@@ -97,6 +100,7 @@ define(
       for(var i=0,nb=this.config.allowed_extensions.length;i<nb;i++){
         var ext = this.config.allowed_extensions[i];
         this.formats.innerHTML += '<img src="'+this.folderUrl+'/images/formats/'+ext+'.png" title="'+ext.toUpperCase()+'"/>';
+//        this.formats2.innerHTML += '<img src="'+this.folderUrl+'/images/formats/'+ext+'.png" title="'+ext.toUpperCase()+'"/>';
       }
 
       //Load projection ressources
@@ -855,15 +859,49 @@ define(
 		    this.addGeojson(geojson);
 		},
 
-        _getGeoJsonConverter:function(){
-            if(!this._GeoJsonConverter)
-                this._GeoJsonConverter = jsonConverters.geoJsonConverter();
-            return this._GeoJsonConverter;
-        },
+    _geojsonGeometryToJsonGeometry:function(geojson_geometry){
+       return GeojsonConverters.geojsonToArcGIS(geojson_geometry);
+    },
+
+    _geojsonToJson:function(geojson){
+        //result may return geometry or list of geometries or feature or list of features
+        var result = GeojsonConverters.geojsonToArcGIS(geojson);
+        if(!result)
+          return false;
+
+        //If single object -> to array
+        if(!Array.isArray(result)) result = [result];
+
+        // if geometries, transform to features.
+        for(var i=0,nb=result.length;i<nb;i++){
+           //If is geometry -> to feature
+           if(!result[i].geometry && (result[i].x || result[i].paths || result[i].rings)){
+              result[i] = {
+                geometry: result[i],
+                attributes: {}
+              };
+           }
+        }
+
+        //Return esri json
+        return {
+          "features" : result,
+          "displayFieldName" : "",
+          "fieldAliases" : {},
+          "spatialReference" : {
+            "wkid" : 4326,
+            "latestWkid" : 4326
+          },
+          "fields" : []
+        }
+
+    },
 
 		addGeojson:function(geojson){
 		    console.log("Geojson", geojson);
-        var json = this._getGeoJsonConverter().toEsri(geojson);
+        var json = this._geojsonToJson(geojson);
+        console.log("geojson", geojson);
+        console.log("json", json);
         delete(geojson);
 
         var id_import =  'import'+this._nb_treatments;

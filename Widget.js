@@ -1,4 +1,3 @@
-console.log("FileImporter\Widget.js", wabVersion);
 var module_GeojsonConverter = (!wabVersion || wabVersion < 2.5) ? './GeojsonConverters' : 'jimu/GeojsonConverters';
 define(
     [
@@ -121,6 +120,13 @@ define(
       }));
 
 		},
+
+    showFormats:function(){
+
+      new Message({
+        message: this.formats.innerHTML
+      });
+    },
 
 		loadFile : function (evt) {
 			var form = false;

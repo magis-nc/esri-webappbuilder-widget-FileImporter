@@ -2,8 +2,9 @@
     <div data-dojo-attach-point="workZone" class="work-zone">
         <div id="import-section" class="section" data-dojo-attach-point="importSection">
             <form class="input-form" enctype="multipart/form-data" id="form" method="GET" action="#" data-dojo-attach-point="inputForm">
-                <input id="file" name="file" type="file" class="input-file" data-dojo-attach-point="inputFile" data-dojo-attach-event="onChange:loadFile"/>
+                <input id="file" title="Formats autorisés" name="file" type="file" class="input-file" data-dojo-attach-point="inputFile" data-dojo-attach-event="onChange:loadFile"/>
             </form>
+            <span class="formats-btn" data-dojo-attach-event="onClick:showFormats">?</span>
         </div>
         <div id="loading-section" class="section" data-dojo-attach-point="loadingSection" style="display:none;">
             <div class="loading-zone">
@@ -17,7 +18,7 @@
     </div>
     <div data-dojo-attach-point="dropZone" class="drop-zone" style="display:none;">
         <img src="${folderUrl}/images/drop.png" />
-        <p>Posez le fichier ici pour lancer l'import</p>
-        <div data-dojo-attach-point="formats" class="formats"></div>
+        <p>Posez le fichier ici pour lancer l'import.</p>
+        <div data-dojo-attach-point="formats" class="jimu-widget-fileimporter-formats"><span>Les formats suivants sont supportés :</span></div>
     </div>
 </div>

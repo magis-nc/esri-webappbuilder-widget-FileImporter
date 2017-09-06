@@ -129,10 +129,30 @@
     margin-top: 10px;
 }
 
-.jimu-widget-fileimporter .formats{
+.jimu-widget-fileimporter .formats-btn{
+  width: 20px;
+  height: 20px;
+  background-color: lightblue;
+  cursor: pointer;
+  border-radius: 50%;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  text-align: center;
+  font-weight: bold;
+  padding: 2px;
+  color: #3d3d3f;
+}
+.jimu-widget-fileimporter .formats-btn:hover{
+  opacity:0.8;
+}
+.jimu-widget-fileimporter-formats{
   width: 100%;
 }
-.jimu-widget-fileimporter .formats img{
+.jimu-widget-fileimporter-formats img{
   display:inline-block;
   width:48px;
+}
+.jimu-widget-fileimporter-formats span{
+  width:100%;
 }
